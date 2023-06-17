@@ -1,0 +1,53 @@
+<app-loading></app-loading>
+
+<div class="logo">
+        <!-- <img src="./../../../assets/images/logo_utm.png" /> 
+        <span>{{eventos._NOMBRE_APP}}</span> -->
+
+
+        <div class="form_login">
+          <h1 class="bienvenidos"> Bienvenidos </h1>
+          <h3 class> Por favor indrodusca los datos requeridos: </h3>
+            <input type = "number" [(ngModel)]="objeto_persona.cedula" nz-input placeholder="Cedula del propietario"/>
+            <input type = "text" [(ngModel)]="objeto_persona.nombres" nz-input placeholder="Nombres de la mascota"/>
+            <input type = "text" [(ngModel)]="objeto_persona.apellidos" nz-input placeholder="Nombre del su dueño"/>
+            <input type = "email" [(ngModel)]="objeto_persona.correo" nz-input placeholder="Correo de contacto"/>
+    
+    
+            <nz-select [(ngModel)]="objeto_persona.ciudad" style="width: 100%;" nzPlaceHolder="Seleccione su provincia">
+                <nz-option *ngFor="let item of objeto_ciudad" nzValue="{{item}}" nzLabel="{{item}}"></nz-option>
+            </nz-select>
+    
+    
+            <button [disabled]="!objeto_persona.cedula.length || !objeto_persona.nombres || !objeto_persona.apellidos || !objeto_persona.ciudad || !objeto_persona.correo" 
+              nzType="primary" (click)="dar_click()">Guardar</button>
+        
+                <div class="tablaestilo">
+                  <nz-table>
+                    <thead>
+                      <tr>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellios</th>
+                        <th>Ciudad</th>
+                        <th>Acciones</th>
+    
+    
+    
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of objeto_tabla; let i =index">
+                        <td>{{data.cedula}}</td>
+                        <td>{{data.nombres}}</td>
+                        <td>{{data.apellidos}}</td>
+                        <td>{{data.ciudad}}</td>
+                        <td> <a (click)="eliminar(i)">Eliminar</a>  </td>
+                        <td>    <a (click)="actualizar(i)">Actualizar</a>                            
+                        </td>
+    
+                      </tr>
+                    </tbody>
+                  </nz-table>
+                </div>
+                </div>

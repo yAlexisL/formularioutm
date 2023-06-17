@@ -1,0 +1,73 @@
+<app-loading></app-loading>
+
+<div class="logo">
+        <!-- <img src="./../../../assets/images/logo_utm.png" /> 
+        <span>{{eventos._NOMBRE_APP}}</span> -->
+
+
+    <div class="form_login">
+      <h1 class="bienvenidos"> Bienvenidos </h1>
+      <h3 class> Por favor indroduzca los datos: </h3>
+        <input type = "tel" [(ngModel)]="objeto_persona.Id_equipo" nz-input placeholder="Id equipo"/>
+        <input type = "text" [(ngModel)]="objeto_persona.Marca" nz-input placeholder="Marca"/>
+        <input type = "text" [(ngModel)]="objeto_persona.Categoria" nz-input placeholder="Categoria"/>
+        <input type = "email" [(ngModel)]="objeto_persona.correo" nz-input placeholder="Correo"/>
+
+
+        <nz-select [(ngModel)]="objeto_persona.ciudad" style="width: 100%;" nzPlaceHolder="Seleccione">
+            <nz-option *ngFor="let item of objeto_ciudad" nzValue="{{item}}" nzLabel="{{item}}"></nz-option>
+        </nz-select>
+
+
+        <button [disabled]="!objeto_persona.Id_equipo|| !objeto_persona.Marca || !objeto_persona.Categoria">
+            <nz-button nzType="primary" (click)="dar_click()">Guardar</nz-button>
+        </button>
+    
+            <div class="tablaestilo">
+              <nz-table>
+                <thead>
+                  <tr>
+                    <th>Id equipo</th>
+                    <th>Marca</th>
+                    <th>Categoria</th>
+                    <th>Ciudad</th>
+                    <th>Accion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of objeto_tabla; let i =index">
+                    <td>{{data.Id_equipo}}</td>
+                    <td>{{data.Marca}}</td>
+                    <td>{{data.Categoria}}</td>
+                    <td>{{data.ciudad}}</td>
+                    <td>
+                      <!--<a>Action 一 {{data.name}}</a>
+                      <nz-divider nzType="vertical"></nz-divider>-->
+                      <a (click)="eliminar(i)">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </nz-table>
+            </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
